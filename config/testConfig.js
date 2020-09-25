@@ -2,7 +2,7 @@ const FlightSuretyApp = artifacts.require("FlightSuretyApp");
 const FlightSuretyData = artifacts.require("FlightSuretyData");
 const BigNumber = require('bignumber.js');
 
-const Config = async function(accounts) {
+exports.TestConfig = async function(accounts) {
 
     // My ganache-cli accounts and private keys
     // I will be using the accounts as follow:
@@ -131,13 +131,11 @@ const Config = async function(accounts) {
         "0x2f2899d6d35b1a48a4fbdc93a37a72f264a9fca7"
     ];
 
-
     const owner = accounts[0];
     let firstAirline = accounts[1];
 
     const flightSuretyData = await FlightSuretyData.new();
     const flightSuretyApp = await FlightSuretyApp.new();
-
 
     return {
         owner: owner,
@@ -147,8 +145,4 @@ const Config = async function(accounts) {
         flightSuretyData: flightSuretyData,
         flightSuretyApp: flightSuretyApp
     }
-}
-
-module.exports = {
-    Config: Config
 };

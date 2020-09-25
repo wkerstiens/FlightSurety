@@ -13,6 +13,7 @@ dist/
 .DS_Store
 /dapp/
 prod/
+build/
 
 # if you remove the above rule, at least ignore the following:
 
