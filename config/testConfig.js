@@ -2,7 +2,7 @@ const FlightSuretyApp = artifacts.require("FlightSuretyApp");
 const FlightSuretyData = artifacts.require("FlightSuretyData");
 const BigNumber = require('bignumber.js');
 
-exports.TestConfig = async function(accounts) {
+const Config = async (accounts) => {
 
     // My ganache-cli accounts and private keys
     // I will be using the accounts as follow:
@@ -132,17 +132,16 @@ exports.TestConfig = async function(accounts) {
     ];
 
     const owner = accounts[0];
-    let firstAirline = accounts[1];
-
-    const flightSuretyData = await FlightSuretyData.new();
-    const flightSuretyApp = await FlightSuretyApp.new();
+    const firstAirline = accounts[1];
 
     return {
         owner: owner,
         firstAirline: firstAirline,
         weiMultiple: (new BigNumber(10)).pow(18),
-        testAddresses: testAddresses,
-        flightSuretyData: flightSuretyData,
-        flightSuretyApp: flightSuretyApp
+        testAddresses: testAddresses
     }
+}
+
+module.exports = {
+    Config: Config
 };
