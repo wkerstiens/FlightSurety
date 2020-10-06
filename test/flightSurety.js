@@ -12,7 +12,6 @@ contract('Flight Surety Tests', async (accounts) => {
     /****************************************************************************************/
     /* Operations and Settings                                                              */
     /****************************************************************************************/
-
     it(`Has correct initial isOperational() value`, async function () {
 
         // Get operating status
@@ -20,17 +19,6 @@ contract('Flight Surety Tests', async (accounts) => {
         assert.equal(status, true, "Incorrect operating status value");
 
     });
-    /*
-    it(`(passenger) can withdraw ones insurance`, async function () {
-
-      let passenger = accounts[2];
-      await config.flightSuretyApp.buy(1 , "Flight no1", { from: passenger });
-      await config.flightSuretyApp.pay({ from: passenger });
-      let transffunds = await config.flightSuretyApp.getPassengersInsurance({ from: passenger});
-      console.log(transffunds);
-      assert.equal(transffunds, 1, "Funds are not transfered.")
-
-    });*/
 
     it(`Non Contract Owner cannot change operational status`, async function () {
 
@@ -107,7 +95,6 @@ contract('Flight Surety Tests', async (accounts) => {
         assert.equal(result, true, "Airline was not registered but it should.");
 
     });
-
 
     it('Registration of fifth and subsequent airlines requires multi-party consensus of 50% of registered airliner', async () => {
         const newAirline1 = accounts[3];

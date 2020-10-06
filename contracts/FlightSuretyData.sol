@@ -36,7 +36,6 @@ contract FlightSuretyData {
         address[] insuredPassengers;
     }
 
-
     // string mapping to flight
     mapping(bytes32 => Flight) private flights;
     bytes32[] private currentFlights;
@@ -64,7 +63,6 @@ contract FlightSuretyData {
     event ContractAuthorized(address _contractId);
     event OperationalStatusChanged(bool _state);
 
-
     constructor(address airline) public payable {
         contractOwner = msg.sender;
         _contractBalance = _contractBalance.add(msg.value);
@@ -74,7 +72,6 @@ contract FlightSuretyData {
     /********************************************************************************************/
     /*                                       FUNCTION MODIFIERS                                 */
     /********************************************************************************************/
-
     modifier requireIsOperational() {
         require(operational, "Contract is currently not operational");
         _;  // All modifiers require an "_" which indicates where the function body will be added
@@ -93,12 +90,6 @@ contract FlightSuretyData {
     /********************************************************************************************/
     /*                                       UTILITY FUNCTIONS                                  */
     /********************************************************************************************/
-
-    /**
-    * @dev Get operating status of contract
-    *
-    * @return A bool that is the current operating status
-    */      
     function isOperational() public view returns(bool) {
         return operational;
     }
@@ -116,7 +107,6 @@ contract FlightSuretyData {
     *
     * When operational mode is disabled, all write transactions except for this one will fail
     */
-
     function setOperatingStatus ( bool mode ) external requireContractOwner {
         require(mode != operational, "Can't set same state more than once");
         operational = mode;
@@ -138,7 +128,6 @@ contract FlightSuretyData {
     /********************************************************************************************/
     /*                                     SMART CONTRACT FUNCTIONS                             */
     /********************************************************************************************/
-
     function isAirline( address _address) external view returns(bool) {
         return airlines[_address].isRegistered;
     }
@@ -291,6 +280,5 @@ contract FlightSuretyData {
         passengers[payee].balance = 0;
         payee.transfer(balanceOwed);
     }
-
 }
 

@@ -63,9 +63,6 @@ flightSuretyApp.events.OracleRequest({
     let timestamp = new BigNumber(event.returnValues.timestamp);
     let found = false;
 
-    console.log(airline, flight, timestamp);
-    console.log()
-
     let selectedCode = STATUS_CODES[1];
     console.log(`Flight scheduled to: ${new Date(timestamp.toNumber())}`);
     if (new Date(timestamp.toNumber()) < Date.now()) {
@@ -90,7 +87,6 @@ flightSuretyApp.events.OracleRequest({
         }
     });
 });
-
 
 const app = express(); app.get('/api', (req, res) => { res.send({ message: 'An API for use with your Dapp!' }); });
 
